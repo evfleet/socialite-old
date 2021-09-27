@@ -10,3 +10,19 @@ services:
     ports:
       - 3000:3000
     command: npm run start
+
+  database:
+    image: postgres:13-alpine
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=${PG_PASS}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_DB=${PG_TABLE}
+
+volumes:
+  postgres_data:
+    
