@@ -1,13 +1,13 @@
 import { Injectable, Inject } from '@nestjs/common';
 import { Pool } from 'pg';
 
-import { DATABASE } from '../config/constants';
+import { modules } from '../config/constants';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
-  constructor(@Inject(DATABASE) private database: Pool) {}
+  constructor(@Inject(modules.DATABASE) private database: Pool) {}
 
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';

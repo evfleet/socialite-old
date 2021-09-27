@@ -1,1 +1,3 @@
-export const DATABASE = 'DATABASE';
+export const modules = {
+  DATABASE: 'DATABASE',
+};

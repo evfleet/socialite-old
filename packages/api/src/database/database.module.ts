@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { Pool } from 'pg';
 
-import { DATABASE } from '../config/constants';
+import { modules } from '../config/constants';
 
 const DatabaseProvider = {
-  provide: DATABASE,
+  provide: modules.DATABASE,
   useValue: new Pool({
     host: 'database',
     port: 5432,
