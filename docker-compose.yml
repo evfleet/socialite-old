@@ -9,6 +9,10 @@ services:
       - /app/node_modules
     ports:
       - 3000:3000
+    environment:
+      - POSTGRES_PASSWORD=${PG_PASS}
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_DB=${PG_TABLE}
     command: npm run start
 
   database:

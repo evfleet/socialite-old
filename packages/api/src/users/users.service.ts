@@ -1,15 +1,24 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Inject } from '@nestjs/common';
+import { Pool } from 'pg';
+
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UsersService {
+  constructor(@Inject('PG_CONNECTION') private database: Pool) {}
+
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
   }
 
-  findAll() {
-    return `This action returns all users`;
+  async findAll() {
+    const client = await this.database.connect();
+    const { rows } = await client.query('SELECT NOW()');
+
+    await client.release();
+
+    return { results: rows };
   }
 
   findOne(id: number) {
