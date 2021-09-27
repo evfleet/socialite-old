@@ -20,6 +20,7 @@ services:
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./packages/api/src/database/sql/create-tables.sql:/docker-entrypoint-initdb.d/1-create-tables.sql
     ports:
       - 5432:5432
     environment:

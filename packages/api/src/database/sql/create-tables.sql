@@ -1,0 +1,12 @@
+CREATE TABLE users (
+  id INT GENERATED ALWAYS AS IDENTITY,
+  email VARCHAR(320) NOT NULL UNIQUE,
+  handle VARCHAR(15) NOT NULL UNIQUE,
+  display_name VARCHAR(50) NOT NULL,
+  password_hash VARCHAR NOT NULL,
+  verified BOOLEAN DEFAULT 'false',
+  verification_token VARCHAR NOT NULL,
+  created_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  updated_at TIMESTAMP NOT NULL DEFAULT NOW(),
+  PRIMARY KEY (id)
+);
