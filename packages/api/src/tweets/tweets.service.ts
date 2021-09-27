@@ -1,10 +1,8 @@
 import { Injectable } from '@nestjs/common';
-import { CreateTweetDto } from './dto/create-tweet.dto';
-import { UpdateTweetDto } from './dto/update-tweet.dto';
 
 @Injectable()
 export class TweetsService {
-  create(createTweetDto: CreateTweetDto) {
+  create(body) {
     return 'This action adds a new tweet';
   }
 
@@ -16,7 +14,7 @@ export class TweetsService {
     return `This action returns a #${id} tweet`;
   }
 
-  update(id: number, updateTweetDto: UpdateTweetDto) {
+  update(id: number, body) {
     return `This action updates a #${id} tweet`;
   }
 

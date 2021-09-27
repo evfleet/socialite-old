@@ -7,8 +7,6 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { CreateTweetDto } from './dto/create-tweet.dto';
-import { UpdateTweetDto } from './dto/update-tweet.dto';
 import { TweetsService } from './tweets.service';
 
 @Controller('tweets')
@@ -16,8 +14,8 @@ export class TweetsController {
   constructor(private readonly tweetsService: TweetsService) {}
 
   @Post()
-  create(@Body() createTweetDto: CreateTweetDto) {
-    return this.tweetsService.create(createTweetDto);
+  create(@Body() body) {
+    return this.tweetsService.create(body);
   }
 
   @Get()
@@ -31,8 +29,8 @@ export class TweetsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateTweetDto: UpdateTweetDto) {
-    return this.tweetsService.update(+id, updateTweetDto);
+  update(@Param('id') id: string, @Body() body) {
+    return this.tweetsService.update(+id, body);
   }
 
   @Delete(':id')
