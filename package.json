@@ -8,7 +8,8 @@
     "packages/*"
   ],
   "scripts": {
-    "commit": "cz"
+    "commit": "cz",
+    "start:test": "./scripts/start-test.sh"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"
