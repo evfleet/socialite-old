@@ -12,7 +12,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${PG_PASS}
       - POSTGRES_USER=${PG_USER}
-      - POSTGRES_DB=${PG_TABLE}
+      - POSTGRES_DB=${PG_DB}
     command: npm run start:dev
 
   database:
@@ -26,7 +26,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=${PG_PASS}
       - POSTGRES_USER=${PG_USER}
-      - POSTGRES_DB=${PG_TABLE}
+      - POSTGRES_DB=${PG_DB}
 
 volumes:
   postgres_data:
