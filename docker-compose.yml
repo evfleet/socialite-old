@@ -5,15 +5,15 @@ services:
     build:
       context: ./packages/api
     volumes:
-      - ./packages/api:/app
-      - /app/node_modules
+      - ./packages/api:/app/api
+      - /app/api/node_modules
     ports:
       - 3000:3000
     environment:
       - POSTGRES_PASSWORD=${PG_PASS}
       - POSTGRES_USER=${PG_USER}
       - POSTGRES_DB=${PG_DB}
-    command: ${COMMAND}
+    command: "npm run start:dev"
 
   database:
     image: postgres:13-alpine

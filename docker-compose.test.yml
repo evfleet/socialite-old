@@ -1,1 +1,20 @@
 version: "3.8"
+
+services:
+  test:
+    extends:
+      file: docker-compose.yml
+      service: api
+    tty: true
+    stdin_open: true
+    command: "npm run test"
+
+  test-watch:
+    extends:
+      file: docker-compose.yml
+      service: api
+    volumes:
+      - ./.git:/app/.git
+    tty: true
+    stdin_open: false
+    command: "npm run test:watch"
