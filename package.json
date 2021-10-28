@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "commit": "cz",
-    "start:test": "./scripts/start-test.sh"
+    "test": "./scripts/test.sh",
+    "test:watch": "WATCH=true ./scripts/test.sh"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"
