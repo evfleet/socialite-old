@@ -1,9 +1,8 @@
-import { Global, Module } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { Pool } from 'pg';
-import { modules } from '../config/constants';
 
 const DatabaseProvider = {
-  provide: modules.DATABASE,
+  provide: 'DATABASE',
   useValue: new Pool({
     host: 'database',
     port: 5432,
@@ -13,7 +12,6 @@ const DatabaseProvider = {
   }),
 };
 
-@Global()
 @Module({
   providers: [DatabaseProvider],
   exports: [DatabaseProvider],

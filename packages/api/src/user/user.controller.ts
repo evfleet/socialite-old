@@ -7,34 +7,34 @@ import {
   Patch,
   Post,
 } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { UserService } from './user.service';
 
 @Controller('users')
-export class UsersController {
-  constructor(private readonly usersService: UsersService) {}
+export class UserController {
+  constructor(private readonly userService: UserService) {}
 
   @Post()
   create(@Body() body) {
-    return this.usersService.create(body);
+    return this.userService.create(body);
   }
 
   @Get()
   findAll() {
-    return this.usersService.findAll();
+    return this.userService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.usersService.findOne(+id);
+    return this.userService.findOne(+id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() body) {
-    return this.usersService.update(+id, body);
+    return this.userService.update(+id, body);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
+    return this.userService.remove(+id);
   }
 }

@@ -1,22 +1,25 @@
-import { Inject, Injectable } from '@nestjs/common';
-import { Pool } from 'pg';
-import { modules } from '../config/constants';
+import { Injectable } from '@nestjs/common';
+import { UserRepository } from './user.repository';
 
 @Injectable()
-export class UsersService {
-  constructor(@Inject(modules.DATABASE) private database: Pool) {}
+export class UserService {
+  constructor(private readonly userRepository: UserRepository) {}
 
   create(body) {
     return 'This action adds a new user';
   }
 
   async findAll() {
+    /*
     const client = await this.database.connect();
     const { rows } = await client.query('SELECT NOW()');
 
     await client.release();
 
     return { results: rows };
+    */
+
+    return this.userRepository.findAll();
   }
 
   findOne(id: number) {
