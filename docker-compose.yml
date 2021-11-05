@@ -5,27 +5,14 @@ services:
     build:
       context: ./packages/api
     volumes:
-      - ./packages/api:/app/api
       - /app/api/node_modules
-    environment:
-      - POSTGRES_PASSWORD=${PG_PASS}
-      - POSTGRES_USER=${PG_USER}
-      - POSTGRES_DB=${PG_DB}
-    command: "npm run start:dev"
 
   database:
     image: postgres:13-alpine
     restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data
       - ./packages/api/src/database/sql/create-tables.sql:/docker-entrypoint-initdb.d/1-create-tables.sql
-    ports:
-      - 5433:5432
-    environment:
-      - POSTGRES_PASSWORD=${PG_PASS}
-      - POSTGRES_USER=${PG_USER}
-      - POSTGRES_DB=${PG_DB}
-
+      
 volumes:
   postgres_data:
     

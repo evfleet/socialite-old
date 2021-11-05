@@ -9,8 +9,10 @@
   ],
   "scripts": {
     "commit": "cz",
-    "test": "./scripts/test.sh",
-    "test:watch": "WATCH=true ./scripts/test.sh"
+    "test:unit": "./scripts/test-unit.sh",
+    "test:unit:watch": "WATCH=true ./scripts/test-unit.sh",
+    "test:e2e": "./scripts/test-e2e.sh",
+    "test:e2e:watch": "WATCH=true ./scripts/test-e2e.sh"
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0"

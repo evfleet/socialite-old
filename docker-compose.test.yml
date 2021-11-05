@@ -1,20 +1,54 @@
 version: "3.8"
 
 services:
-  test:
+  api_unit:
     extends:
       file: docker-compose.yml
       service: api
     tty: true
     stdin_open: true
-    command: "npm run test"
+    command: "npm run test:unit"
 
-  test-watch:
+  api_unit_watch:
     extends:
       file: docker-compose.yml
       service: api
     volumes:
       - ./.git:/app/.git
+      - ./packages/api:/app/api
     tty: true
     stdin_open: false
-    command: "npm run test:watch"
+    command: "npm run test:unit:watch"
+
+  api_e2e:
+    extends:
+      file: docker-compose.yml
+      service: api
+    tty: true
+    stdin_open: true
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=socialite_test 
+    command: "npm run test:e2e"
+
+
+  api_e2e_watch:
+    extends:
+      file: docker-compose.yml
+      service: api
+    volumes:
+      - ./.git:/app/.git
+      - ./packages/api:/app/api
+    tty: true
+    stdin_open: false
+    command: "npm run test:e2e:watch"
+
+  database_test:
+    extends:
+      file: docker-compose.yml
+      service: database
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=socialite_test 
